@@ -1,3 +1,5 @@
+// heic decoding implementation from the rust heic crate (https://github.com/imazen/heic)
+// under the AGPL3 license (https://github.com/imazen/heic/blob/main/LICENSE-AGPL3)
 const url=new URL('heic.wasm',import.meta.url);
 let wasm;
 const imports={};
