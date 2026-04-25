@@ -1,3 +1,5 @@
+![crates.io](https://img.shields.io/crates/v/wasm_heic.svg)
+
 [WASM](https://developer.mozilla.org/en-US/docs/WebAssembly) libs
 for [HEIC](https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format) image decoding.
 
