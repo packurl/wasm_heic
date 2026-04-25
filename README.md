@@ -22,4 +22,3 @@ Wasm file optimization:
 Dependencies:
 
 - [heic](https://github.com/imazen/heic) ([AGPL3](https://github.com/imazen/heic/blob/main/LICENSE-AGPL3))
-- [wasm-bindgen](https://github.com/rustwasm/wasm-bindgen) ([MIT License](https://github.com/rustwasm/wasm-bindgen/blob/main/LICENSE-MIT))
