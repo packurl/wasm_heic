@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Test</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#222;color:#eee;font:12pt monospace;height:100%}
+body{min-height:100%;display:grid;place-items:center;padding:1em}
+canvas{max-width:100%;height:auto;background:red}
+</style>
+</head>
+<body>
+<canvas width="0" height="0"></canvas>
+<script type="module">
+const canvas=document.querySelector('canvas');
+const [buffer,{heic}]=await Promise.all([
+  await fetch('./photo_example_apple.heic').then(r=>r.arrayBuffer()),
+  await import('./heic_worker.mjs')
+]);
+const {rgba,width,height}=await heic(new Uint8Array(buffer));
+canvas.width=width;
+canvas.height=height;
+const imageData=new ImageData(new Uint8ClampedArray(rgba),width,height,{pixelFormat: 'rgba-unorm8'});
+canvas.getContext('2d').putImageData(imageData,0,0);
+</script>
+</body>
+</html>

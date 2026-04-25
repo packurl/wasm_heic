@@ -1,0 +1,30 @@
+[package]
+name = "wasm_heic"
+version = "0.1.0"
+edition = "2024"
+authors = ["Jerome David <programingjd@gmail.com>"]
+categories = ["wasm"]
+description = "esm modules for heic decoding, with sync and async (worker) version"
+keywords = ["wasm", "heic", "esm"]
+license = "AGPL-3.0-only"
+repository = "https://github.com/packurl/wasm_heic"
+include = [
+    "Cargo.toml", "src", "LICENSE", "README.md", "rust-toolchain.toml",
+    "heic.d.ts", "heic.mjs", "heic.wasm",
+    "heic_worker.d.ts", "heic_worker.mjs", "heic_worker_script.mjs",
+    "heic_worker_script.js", "heic_for_importScripts.js"
+]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies.heic]
+version = "0.1"
+default-features = false
+features = ["std"]
+
+[profile.release]
+debug = false
+opt-level = "s"
+lto = true
+codegen-units = 1
