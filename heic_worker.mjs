@@ -22,14 +22,15 @@ const worker=await new Promise(r=>{
 /**
  * Decodes the bytes from a heic photo to rgba.
  * @param {Uint8Array} bytes
+ * @param {boolean} [transfer=false]
  * @return {Promise<DecodedRgbaImage>}
  */
-const heic=(bytes)=>new Promise(r=>{
+const heic=(bytes,transfer=false)=>new Promise(r=>{
   worker.onmessage=msg=>{
     worker.onmessage=null;
     r(msg.data);
   }
-  worker.postMessage(bytes);
+  worker.postMessage(bytes,transfer?[bytes.buffer]:undefined);
 });
 
 export {heic};

@@ -16,9 +16,10 @@ declare module 'heic' {
   /**
    * Decodes the bytes from a heic photo to rgba.
    * @param {Uint8Array} bytes
+   * @param {boolean} [transfer=false]
    * @return {Promise<DecodedRgbaImage>}
    */
-  export function heic(bytes: Uint8Array): Promise<DecodedRgbaImage>;
+  export function heic(bytes: Uint8Array, transfer: boolean): Promise<DecodedRgbaImage>;
 
   export default heic;
 }
