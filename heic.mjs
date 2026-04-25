@@ -23,13 +23,14 @@ const heic=bytes=>{
   const p1=malloc(n1,1);
   new Uint8Array(wasm.memory.buffer).set(bytes,p1);
   const r=wasm.decode_rgba(p1,n1);
+  free(p1,n1);
   const ptr_len_w_h=new DataView(wasm.memory.buffer,r,12);
   const p2=ptr_len_w_h.getUint32(0,true);
   const n2=ptr_len_w_h.getUint32(4,true);
   const width=ptr_len_w_h.getUint16(8,true);
   const height=ptr_len_w_h.getUint16(10,true);
+  free(r,12);
   const rgba=new Uint8Array(wasm.memory.buffer).subarray(p2,p2+n2).slice();
-  free(p1,n1);
   free(p2,n2);
   return {width,height,rgba};
 };
