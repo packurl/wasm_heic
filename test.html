@@ -18,7 +18,7 @@ const [buffer,{heic}]=await Promise.all([
   await fetch('./photo_example_apple.heic').then(r=>r.arrayBuffer()),
   await import('./heic_worker.mjs')
 ]);
-const {rgba,width,height}=await heic(new Uint8Array(buffer));
+const {rgba,width,height}=await heic(new Uint8Array(buffer),true);
 canvas.width=width;
 canvas.height=height;
 const imageData=new ImageData(new Uint8ClampedArray(rgba),width,height,{pixelFormat: 'rgba-unorm8'});
